@@ -2299,7 +2299,14 @@
                 // 只压缩 jpeg 图片格式。
                 // gif 可能会丢失针
                 // bmp png 基本上尺寸都不大，且压缩比比较小。
-                if ( !opts || !~'image/jpeg,image/jpg'.indexOf( file.type ) ||
+                //if ( !opts || !~'image/jpeg,image/jpg'.indexOf( file.type ) ||
+                //        file.size < compressSize ||
+                //        file._compressed ) {
+                //    return;
+                //}
+
+                // 取消只压缩jpeg图片格式的限制。[尹磊 2017-12-05]
+                if ( !opts || file.type.indexOf('image') < 0 ||
                         file.size < compressSize ||
                         file._compressed ) {
                     return;
